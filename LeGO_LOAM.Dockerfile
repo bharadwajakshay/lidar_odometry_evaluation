@@ -18,6 +18,8 @@ RUN git clone https://github.com/borglab/gtsam.git && cd gtsam && git checkout 4
 
 WORKDIR /home/akshay/
 RUN apt-get install -y libopencv-dev libboost-all-dev
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y firefox libcanberra-gtk-module libcanberra-gtk3-module
 RUN ln -s /usr/include/opencv4/opencv2 /usr/include/opencv
 RUN mkdir -p catkin_ws/src
 SHELL ["/bin/bash", "-c"]
