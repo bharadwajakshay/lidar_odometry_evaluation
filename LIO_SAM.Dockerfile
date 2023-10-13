@@ -17,7 +17,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-c"]
-WORKDIR /home/akshay/catkin_ws
+WORKDIR /home/akshay/
 
 RUN mkdir -p catkin_ws/src \
     && cd catkin_ws/src \
@@ -27,6 +27,9 @@ RUN mkdir -p catkin_ws/src \
     && catkin_make
 
 RUN echo "source /opt/ros/kinetic/setup.bash" >> /home/akshay/.bashrc \
-    && echo "source /root/catkin_ws/devel/setup.bash" >> /home/akshay/.bashrc
+    && echo "source /home/akshay/catkin_ws/devel/setup.bash" >> /home/akshay/.bashrc
+
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y firefox libcanberra-gtk-module libcanberra-gtk3-module
 
 WORKDIR /home/akshay/catkin_ws
